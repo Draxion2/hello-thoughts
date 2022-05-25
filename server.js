@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// requirng the app to use routes
+app.use(require('./routes'));
+
 // connection to MongoDB
 mongoose.connect(
     process.env.MONGODB_URI ||
