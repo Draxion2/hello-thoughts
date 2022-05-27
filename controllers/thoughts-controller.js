@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const { Users, Thoughts} = require("../models");
 
 const ThoughtsController = {
@@ -77,6 +78,40 @@ const ThoughtsController = {
             console.log(err);
             res.status(400).json(err);
         })
+    },
+
+    // post a new reation to thought
+    addReaction({ params, body }, res) {
+        Thoughts.findByIdAndUpdate(
+            { _id: params.thoughtId },
+            { $push: { reactions: body } },
+            { new: true, runValidators: true }
+        )
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: "No thought found with this id!" });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.json(err));
+    },
+
+    // delete a reation from thought
+    deleteReaction({ params }, res) {
+        Thoughts.findByIdAndUpdate(
+            { _id: params.thoughtId },
+            { $pull: { reactions: { reactionId: params.reactionId } } },
+            { new: true }
+        )
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: "No thought found with this id!" });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.json(err));
     },
 
     // delete a thought
