@@ -120,7 +120,7 @@ const UsersController = {
     },
 
     // delete a User
-    deleteUsers({ params}, res) {
+    deleteUsers({ params }, res) {
         Users.findByIdAndDelete({ _id: params.id })
         .then(dbUsersData => {
             if (!dbUsersData) {

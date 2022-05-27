@@ -1,4 +1,3 @@
-const res = require("express/lib/response");
 const { Users, Thoughts} = require("../models");
 
 const ThoughtsController = {
@@ -29,7 +28,7 @@ const ThoughtsController = {
         .then(dbThoughtData => {
             // if no thought is found, send 404
             if (!dbThoughtData) {
-                res.status(404).json({ message: "No thoughts found with this iD!" });
+                res.status(404).json({ message: "No thoughts found with this id!" });
                 return;
             }
             res.json(dbThoughtData);
