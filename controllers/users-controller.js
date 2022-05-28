@@ -98,8 +98,8 @@ const UsersController = {
         });
     },
 
-    // remove a friend
-    removeFriend({ params }, res) {
+    // delete a friend
+    deleteFriend({ params }, res) {
         Users.findOne({ _id: params.userId })
         .then(updatedUser => Users.updateOne(
             { _id: updatedUser.id},
