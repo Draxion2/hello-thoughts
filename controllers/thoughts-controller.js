@@ -61,8 +61,8 @@ const ThoughtsController = {
 
     // update a thought by id
     updateThought({ params, body}, res) {
-        Thought.findOneAndUpdate(
-            { _id: params.id },
+        Thoughts.findOneAndUpdate(
+            { _id: params.thoughtId },
             body,
             { new: true, runValidators: true }
         )

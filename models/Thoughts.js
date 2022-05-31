@@ -46,12 +46,13 @@ const ThoughtSchema = new Schema({
     toJSON: {
         virtuals: true,
         getters: true
-    }
+    },
+    id: false
 });
 
 // get toal count of reactions
 ThoughtSchema.virtual("reactionCount").get(function() {
-    return "Reactions: " + this.reactions.length
+    return this.reactions.length
 });
 
 const Thought = model("Thought", ThoughtSchema);
