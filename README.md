@@ -11,7 +11,7 @@
 
 ## Description
 
-Hello Thoughts is a social media application that uses a database and server to get, post, update, and delete users, thoughts, and reactions. After a user is created, thoughts can be added to them along with reactions to those specific thoughts. Other users can be added and removed to a friend's list.
+Hello Thoughts is a social network application that uses a database and server to get, post, update, and delete users, thoughts, and reactions. After a user is created, thoughts can be added to them along with reactions to those specific thoughts. Other users can be added and removed to a friend's list.
 
 ## Purpose
 
