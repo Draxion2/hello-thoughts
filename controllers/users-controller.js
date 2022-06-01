@@ -89,7 +89,9 @@ const UsersController = {
                 { $push: { friends: params.userId } },
                 { runValidators: true, new: true }
             )
-            res.json(dbUserData)
+            .then(dbUserData => {
+                res.json(dbUserData)
+            })
         })
         .catch(err => res.status(400).json(err));
     },
@@ -99,15 +101,23 @@ const UsersController = {
         Users.findOneAndUpdate(
             { _id: params.userId },
             { $pull: { friends: params.friendId } },
-            { runValidators: true, new: true }
+            { new: true }
         )
         .then(dbUserData => {
             if(!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id!' });
                 return;
             }
-            res.json(dbUserData);
-        });
+            Users.findOneAndUpdate(
+                { _id: params.friendId },
+                { $pull: { friends: params.userId } },
+                { new: true }
+            )
+            .then(dbUserData => {
+                res.json(dbUserData)
+            })
+        })
+        .catch(err => res.status(400).json(err));
     },
 
     // delete a User
