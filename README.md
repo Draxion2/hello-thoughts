@@ -40,7 +40,8 @@ This app uses the command line, mongo database, mongoose.js, and node.js to func
 
 __Live Demo__
 
-(Live demo will go here!)
+[Hello Thoughts Demo Part 1](https://drive.google.com/file/d/1OlvnbOgmcpQpTtK2IuNKHA22o29JHlLC/view)
+[Hello Thoughts Demo Part 2](https://drive.google.com/file/d/1_lXQ2RMA7V0BmaEB9Dba-Z-WgcdLHR57/view)
 
 ## License
 
