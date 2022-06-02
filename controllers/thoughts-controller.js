@@ -19,7 +19,7 @@ const ThoughtsController = {
 
     // get one thought by id
     getThoughtById({ params }, res) {
-        Thoughts.findOne({ _id: params.id })
+        Thoughts.findOne({ _id: params.thoughtId })
         .populate({
             path: "reactions",
             select: "-__v"
@@ -98,7 +98,7 @@ const ThoughtsController = {
 
     // delete a reation from thought
     deleteReaction({ params }, res) {
-        Thoughts.findByIdAndUpdate(
+        Thoughts.findOneAndUpdate(
             { _id: params.thoughtId },
             { $pull: { reactions: { reactionId: params.reactionId } } },
             { new: true }
